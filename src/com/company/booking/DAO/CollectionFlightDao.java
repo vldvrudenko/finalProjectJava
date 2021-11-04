@@ -8,8 +8,16 @@ import java.util.List;
 public class CollectionFlightDao implements FlightDao {
     private List<Flight> flights = new ArrayList<>();
 
+
+
     @Override
     public List<Flight> getAllFlights() {
         return flights;
+    }
+
+    @Override
+    public Flight addFlight(Flight flight) {
+        flights.add(flight);
+        return flight;
     }
 }

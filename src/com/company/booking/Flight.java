@@ -69,8 +69,8 @@ public class Flight {
 
 @Override
 public String toString(){
-return "Рейс("+ id +"):дата-"+localDate +",время-"+localTime +"место назначения-"
-        +destination+",свободных мест"+freePlaces ;
+return "Рейс("+ id +"):дата-"+localDate +",время-"+localTime +",отправление из-"+departure+",место назначения-"
+        +destination+",свободных мест-"+freePlaces ;
 }
 @Override
 public boolean equals(Object o){
