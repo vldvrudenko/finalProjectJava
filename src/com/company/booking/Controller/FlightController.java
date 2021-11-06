@@ -8,21 +8,24 @@ import java.util.List;
 
 public class FlightController {
     private FlightService flightService;
-    private List<Flight> flights = new ArrayList<>();
-    private Flight flight;
+
 
     public FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
 
     public List<Flight> getAllFlights(){
-    return flights;
+    return flightService.getAllFlights();
 }
-    public Flight getFlightById(int id){
-        return flights.get(id);
-    }
+   // public Flight getFlightById(int id){
+        //return flightsS.get(id);
+   // }
     public Flight addFlight(Flight flight){
-        flights.add(flight);
-        return flight;
+      return  flightService.addFlight(flight);
+
+    }
+    public  List<Flight> generateFlights(){
+       flightService.generateFlights();
+        return flightService.getAllFlights();
     }
 }
