@@ -14,18 +14,19 @@ public class FlightController {
         this.flightService = flightService;
     }
 
-    public List<Flight> getAllFlights(){
-    return flightService.getAllFlights();
-}
-   // public Flight getFlightById(int id){
-        //return flightsS.get(id);
-   // }
-    public Flight addFlight(Flight flight){
-      return  flightService.addFlight(flight);
+    public List<Flight> getAllFlights() {
+        return flightService.getAllFlights();
+    }
+
+    // public Flight getFlightById(int id){
+    //return flightsS.get(id);
+    // }
+    public Flight addFlight(Flight flight) {
+        return flightService.addFlight(flight);
 
     }
-    public  List<Flight> generateFlights(){
-       flightService.generateFlights();
-        return flightService.getAllFlights();
+
+    public void generateFlights() {
+        flightService.generateFlights();
     }
 }

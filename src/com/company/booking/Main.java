@@ -13,20 +13,16 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args)throws IOException {
+    public static void main(String[] args) throws IOException {
 
         FlightDao collectionFlightDao = new CollectionFlightDao();
         FlightService flightService = new FlightService(collectionFlightDao);
-        FlightController flightController  = new FlightController(flightService);
+        FlightController flightController = new FlightController(flightService);
 
-
-
-        System.out.println(flightController.generateFlights());
+        flightController.generateFlights();
         System.out.println(flightController.getAllFlights());
 
 
-
-
-          }
+    }
 
 }

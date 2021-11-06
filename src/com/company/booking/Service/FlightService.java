@@ -26,7 +26,7 @@ public class FlightService {
      return   flightDao.addFlight(flight);
 
     }
-    public  List<Flight> generateFlights(){
+    public  void generateFlights(){
         for (int i = 0;i < 20 ;i++){
             flightDao.addFlight(new Flight("London"));
             flightDao.addFlight(new Flight("Paris"));
@@ -36,6 +36,5 @@ public class FlightService {
             flightDao.addFlight(new Flight("Amsterdam"));
             flightDao.addFlight(new Flight("Milan"));
         }
-        return flightDao.getAllFlights();
     }
 }
