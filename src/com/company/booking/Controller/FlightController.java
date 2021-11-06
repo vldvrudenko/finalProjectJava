@@ -3,8 +3,8 @@ package com.company.booking.Controller;
 import com.company.booking.Flight;
 import com.company.booking.Service.FlightService;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class FlightController {
     private FlightService flightService;
@@ -18,9 +18,9 @@ public class FlightController {
         return flightService.getAllFlights();
     }
 
-    // public Flight getFlightById(int id){
-    //return flightsS.get(id);
-    // }
+     public Optional<Flight> getFlightById(int id){
+    return flightService.getFlightById(id);
+     }
     public Flight addFlight(Flight flight) {
         return flightService.addFlight(flight);
 

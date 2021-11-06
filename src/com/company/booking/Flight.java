@@ -14,6 +14,9 @@ public class Flight {
     private LocalTime localTime;
 
 
+    public Flight(){
+        this.departure = Departures.Kyiv;
+    }
     public Flight(String destination){
         this.departure = Departures.Kyiv;
         this.destination = destination;

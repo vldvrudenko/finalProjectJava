@@ -21,6 +21,8 @@ public class Main {
 
         flightController.generateFlights();
         System.out.println(flightController.getAllFlights());
+        System.out.println(flightController.getFlightById(100));
+
 
 
     }
