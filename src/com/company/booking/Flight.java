@@ -1,12 +1,12 @@
 package com.company.booking;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
+import java.util.Random;
 
 public class Flight {
-    private int id ;
+    private Long id ;
     private  String destination ;
     private int freePlaces;
     private Departures departure ;
@@ -14,9 +14,15 @@ public class Flight {
     private LocalTime localTime;
 
 
-    public Flight() {
+
+    public Flight(){
         this.departure = Departures.Kyiv;
     }
+    public Flight(String destination){
+        this.departure = Departures.Kyiv;
+        this.destination = destination;
+    }
+
     public LocalDate getLocalDate() {
         return localDate;
     }
@@ -35,11 +41,12 @@ public class Flight {
 
 
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

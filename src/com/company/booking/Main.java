@@ -5,32 +5,28 @@ import com.company.booking.DAO.CollectionFlightDao;
 import com.company.booking.DAO.FlightDao;
 import com.company.booking.Service.FlightService;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         FlightDao collectionFlightDao = new CollectionFlightDao();
         FlightService flightService = new FlightService(collectionFlightDao);
-        FlightController flightController  = new FlightController(flightService);
+        FlightController flightController = new FlightController(flightService);
 
-
-        Flight test = new Flight();
-        test.setLocalDate(LocalDate.of(2021, 1, 1));
-        test.setLocalTime(LocalTime.of(12, 10));
-        test.setId(1);
-        test.setDestination("London");
-        //System.out.println(test.toString());
-        flightController.addFlight(test);
-
-
+        flightController.generateFlights();
         System.out.println(flightController.getAllFlights());
-        System.out.println(flightController.getFlightById(0));
+        System.out.println(flightController.getFlightById(100));
+
 
 
     }
+
+
 }

@@ -3,26 +3,34 @@ package com.company.booking.Controller;
 import com.company.booking.Flight;
 import com.company.booking.Service.FlightService;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Optional;
 
 public class FlightController {
     private FlightService flightService;
-    private List<Flight> flights = new ArrayList<>();
-    private Flight flight;
+
+
 
     public FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
 
-    public List<Flight> getAllFlights(){
-    return flights;
-}
-    public Flight getFlightById(int id){
-        return flights.get(id);
+
+    public List<Flight> getAllFlights() {
+        return flightService.getAllFlights();
     }
-    public Flight addFlight(Flight flight){
-        flights.add(flight);
-        return flight;
+
+     public Optional<Flight> getFlightById(int id){
+    return flightService.getFlightById(id);
+     }
+    public Flight addFlight(Flight flight) {
+        return flightService.addFlight(flight);
+
+    }
+
+    public void generateFlights() {
+        flightService.generateFlights();
+
     }
 }
