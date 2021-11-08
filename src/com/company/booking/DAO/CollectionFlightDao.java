@@ -13,6 +13,7 @@ public class CollectionFlightDao implements FlightDao {
     private Long counter = 1L;
 
 
+
     @Override
     public List<Flight> getAllFlights() {
         return flights;
@@ -20,6 +21,7 @@ public class CollectionFlightDao implements FlightDao {
 
     @Override
     public Flight addFlight(Flight flight) {
+
         flight.setId(counter++);
         flights.add(flight);
         return flight;

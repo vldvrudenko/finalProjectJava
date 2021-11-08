@@ -2,7 +2,6 @@ package com.company.booking.Service;
 
 import com.company.booking.DAO.FlightDao;
 import com.company.booking.Flight;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -12,6 +11,7 @@ public class FlightService {
     private static final int min = 0;
     private static final int max = 49;
     Random rnd = new Random();
+
 
 
     public FlightService(FlightDao flightDao) {
@@ -77,4 +77,5 @@ public class FlightService {
         int year = 2021;
         return LocalDate.of(year, month, day);
     }
+
 }

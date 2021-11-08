@@ -14,6 +14,7 @@ public class Flight {
     private LocalTime localTime;
 
 
+
     public Flight(){
         this.departure = Departures.Kyiv;
     }
@@ -21,6 +22,7 @@ public class Flight {
         this.departure = Departures.Kyiv;
         this.destination = destination;
     }
+
     public LocalDate getLocalDate() {
         return localDate;
     }
@@ -36,6 +38,7 @@ public class Flight {
     public void setLocalTime(LocalTime localTime) {
         this.localTime = localTime;
     }
+
 
 
 
@@ -70,7 +73,6 @@ public class Flight {
     public void setDeparture(Departures departure) {
         this.departure = departure ;
     }
-
 
 @Override
 public String toString(){
