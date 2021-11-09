@@ -25,7 +25,7 @@ public class Main {
         // System.out.println(flightController.getAllFlights());
         System.out.println(flightController.getFlightById(100));
         flightController.findFlights(LocalDate.of(2021,11,9),"Tokyo",2);
-        //flightController.nextFlights();
+        flightController.nextFlights();
 
 
     }

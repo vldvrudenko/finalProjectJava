@@ -90,7 +90,7 @@ public Flight getFlightById(int id) {
     }
 
     public LocalDate createRandomDate(int startYear) {
-        int day = createRandomIntBetween(1, 28);
+        int day = createRandomIntBetween(9, 28);
        // int month = createRandomIntBetween(11, 12);
         int month = 11;
         int year = 2021;
