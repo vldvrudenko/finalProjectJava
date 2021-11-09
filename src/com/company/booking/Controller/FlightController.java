@@ -3,6 +3,7 @@ package com.company.booking.Controller;
 import com.company.booking.Flight;
 import com.company.booking.Service.FlightService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +19,14 @@ public class FlightController {
         return flightService.getAllFlights();
     }
 
-     public Optional<Flight> getFlightById(int id){
+     public Flight getFlightById(int id){
     return flightService.getFlightById(id);
+     }
+     public void findFlights (LocalDate date, String destination, int amountOfTickets){
+        flightService.findFlights(date,destination,amountOfTickets);
+     }
+     public void nextFlights(){
+         flightService.nextFlights();
      }
     public Flight addFlight(Flight flight) {
         return flightService.addFlight(flight);
