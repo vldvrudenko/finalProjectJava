@@ -5,7 +5,10 @@ import com.company.booking.Flight;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+
 import java.util.stream.Collectors;
+
+
 
 public class FlightService {
     private FlightDao flightDao;
@@ -22,6 +25,7 @@ public class FlightService {
     public List<Flight> getAllFlights() {
         return flightDao.getAllFlights();
     }
+
 
 public Flight getFlightById(int id) {
       return flightDao.getAllFlights()
@@ -47,11 +51,13 @@ public Flight getFlightById(int id) {
                         && f.getLocalTime().isAfter(LocalTime.now())))
                 .sorted(Comparator.comparing(Flight::getLocalTime))
                  .forEach(System.out::println);
+
     }
 
 
     public Flight addFlight(Flight flight) {
         return flightDao.addFlight(flight);
+
     }
 
     public Flight generateData(Flight flight) {
@@ -63,7 +69,11 @@ public Flight getFlightById(int id) {
     }
 
     public void generateFlights() {
+
         for (int i = 0; i < 700; i++) {
+
+      
+
             flightDao.addFlight(generateData(new Flight()));
 
         }
@@ -74,7 +84,6 @@ public Flight getFlightById(int id) {
                 Arrays.asList("Buenos Aires", "Rome", "London", "Tokyo",
                         "Lviv", "Paris", "Minsk", "Sofia", "San Jose", "Cairo",
                         "Tbilisi","Berlin","Milan","Athens","New-York","Dublin"));
-
         int index = new Random().nextInt(places.size());
         return places.get(index);
     }
