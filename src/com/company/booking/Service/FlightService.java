@@ -28,6 +28,7 @@ public class FlightService {
     }
 
 
+
     public Flight getFlightById(int id) {
         return flightDao.getAllFlights()
                 .stream()
@@ -47,11 +48,37 @@ public class FlightService {
     }
     public void nextFlights (){
         flightDao.getAllFlights()
+
+public Flight getFlightById(int id) {
+      return flightDao.getAllFlights()
+                .stream()
+                .filter((f) -> f.getId() == id)
+              .findFirst()
+              .orElse(null);
+    }
+
+    public  void findFlights (LocalDate date,String destination,int amountOfTickets){
+          flightDao.getAllFlights()
+                 .stream()
+                 .filter((f ->f.getLocalDate().isEqual(date)
+                         && f.getDestination().contains(destination)
+                         && f.getFreePlaces() > amountOfTickets))
+                  .sorted(Comparator.comparing(Flight::getLocalDate))
+                  .forEach(System.out::println);
+    }
+    public void nextFlights (){
+         flightDao.getAllFlights()
+
                 .stream()
                 .filter((f -> f.getLocalDate().isEqual(LocalDate.now())
                         && f.getLocalTime().isAfter(LocalTime.now())))
                 .sorted(Comparator.comparing(Flight::getLocalTime))
+
                 .forEach(System.out::println);
+
+                 .forEach(System.out::println);
+      
+     
 
     }
 
@@ -72,6 +99,8 @@ public class FlightService {
     public void generateFlights() {
 
         for (int i = 0; i < 700; i++) {
+
+
 
 
 
@@ -102,6 +131,7 @@ public class FlightService {
     public LocalDate createRandomDate(int startYear) {
         int day = createRandomIntBetween(9, 28);
         // int month = createRandomIntBetween(11, 12);
+       // int month = createRandomIntBetween(11, 12);
         int month = 11;
         int year = 2021;
         return LocalDate.of(year, month, day);

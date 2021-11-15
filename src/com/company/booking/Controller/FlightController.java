@@ -16,8 +16,8 @@ public class FlightController {
     }
 
 
-    public List<Flight> getAll() {
-        return flightService.getAll();
+    public List<Flight> getAllFlight() {
+        return flightService.getAllFlight();
     }
 
     public Flight getFlightById(int id){
@@ -29,6 +29,16 @@ public class FlightController {
     public void nextFlights(){
         flightService.nextFlights();
     }
+
+     public Flight getFlightById(int id){
+    return flightService.getFlightById(id);
+     }
+     public void findFlights (LocalDate date, String destination, int amountOfTickets){
+        flightService.findFlights(date,destination,amountOfTickets);
+     }
+     public void nextFlights(){
+         flightService.nextFlights();
+     }
     public Flight addFlight(Flight flight) {
         return flightService.addFlight(flight);
 
