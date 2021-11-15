@@ -16,6 +16,7 @@ public class FlightService {
     private static final int max = 49;
     Random rnd = new Random();
 
+    private DAO<Flight> flightDao = new CollectionFlightDAO();
 
 
     public FlightService(FlightDao flightDao) {
@@ -23,9 +24,30 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlights() {
-        return flightDao.getAllFlights();
+        return flightDao.getAll();
     }
 
+
+
+    public Flight getFlightById(int id) {
+        return flightDao.getAllFlights()
+                .stream()
+                .filter((f) -> f.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public  void findFlights (LocalDate date,String destination,int amountOfTickets){
+        flightDao.getAllFlights()
+                .stream()
+                .filter((f ->f.getLocalDate().isEqual(date)
+                        && f.getDestination().contains(destination)
+                        && f.getFreePlaces() > amountOfTickets))
+                .sorted(Comparator.comparing(Flight::getLocalDate))
+                .forEach(System.out::println);
+    }
+    public void nextFlights (){
+        flightDao.getAllFlights()
 
 public Flight getFlightById(int id) {
       return flightDao.getAllFlights()
@@ -46,11 +68,17 @@ public Flight getFlightById(int id) {
     }
     public void nextFlights (){
          flightDao.getAllFlights()
+
                 .stream()
                 .filter((f -> f.getLocalDate().isEqual(LocalDate.now())
                         && f.getLocalTime().isAfter(LocalTime.now())))
                 .sorted(Comparator.comparing(Flight::getLocalTime))
+
+                .forEach(System.out::println);
+
                  .forEach(System.out::println);
+      
+     
 
     }
 
@@ -72,7 +100,9 @@ public Flight getFlightById(int id) {
 
         for (int i = 0; i < 700; i++) {
 
-      
+
+
+
 
             flightDao.addFlight(generateData(new Flight()));
 
@@ -100,6 +130,7 @@ public Flight getFlightById(int id) {
 
     public LocalDate createRandomDate(int startYear) {
         int day = createRandomIntBetween(9, 28);
+        // int month = createRandomIntBetween(11, 12);
        // int month = createRandomIntBetween(11, 12);
         int month = 11;
         int year = 2021;
