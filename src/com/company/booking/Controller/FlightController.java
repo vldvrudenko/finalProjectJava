@@ -16,8 +16,8 @@ public class FlightController {
     }
 
 
-    public List<Flight> getAllFlights() {
-        return flightService.getAllFlights();
+    public List<Flight> getAll() {
+        return flightService.getAll();
     }
 
     public Flight getFlightById(int id){

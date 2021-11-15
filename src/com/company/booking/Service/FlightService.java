@@ -24,7 +24,7 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlights() {
-        return flightDao.getAllFlights();
+        return flightDao.getAll();
     }
 
 
