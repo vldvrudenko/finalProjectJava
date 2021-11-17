@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 import java.util.Random;
-
+//этот класс нужно использовать !
 public class Flight {
     private Long id ;
     private  String destination ;
