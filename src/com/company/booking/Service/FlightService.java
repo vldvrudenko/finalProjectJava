@@ -29,6 +29,7 @@ public Flight getFlightById(int id) {
                 .filter((f) -> f.getId() == id)
               .findFirst()
               .orElse(null);
+    //return flightDao.getFlightById(id);
     }
 
     public  void findFlights (LocalDate date,String destination,int amountOfTickets){
