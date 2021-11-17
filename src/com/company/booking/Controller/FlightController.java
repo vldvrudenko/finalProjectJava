@@ -2,8 +2,8 @@ package com.company.booking.Controller;
 
 import com.company.booking.Flight;
 import com.company.booking.Service.FlightService;
-
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +14,7 @@ public class FlightController {
     public FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
+
 
     public List<Flight> getAllFlights() {
         return flightService.getAllFlights();
@@ -35,5 +36,6 @@ public class FlightController {
 
     public void generateFlights() {
         flightService.generateFlights();
+
     }
 }
