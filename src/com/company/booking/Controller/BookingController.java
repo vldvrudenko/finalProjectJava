@@ -3,6 +3,7 @@ package com.company.booking.Controller;
 import com.company.booking.Booking.*;
 import com.company.booking.Constant.DataUtil;
 import com.company.booking.Constant.PersonType;
+import com.company.booking.Flight;
 import com.company.booking.Service.BookingService;
 
 import java.time.LocalDateTime;

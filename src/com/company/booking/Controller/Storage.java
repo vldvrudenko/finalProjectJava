@@ -1,5 +1,7 @@
 package com.company.booking.Controller;
 
+import com.company.booking.Booking.Customer;
+
 public class Storage {
     private Customer user = null;
 

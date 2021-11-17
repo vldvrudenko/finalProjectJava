@@ -5,10 +5,7 @@ import com.company.booking.Flight;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
-
 import java.util.stream.Collectors;
-
-
 
 public class FlightService {
     private FlightDao flightDao;
@@ -23,41 +20,39 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlights() {
-        return flightDao.getAll();
+        return flightDao.getAllFlights();
     }
 
-
-
-public Flight getFlightById(int id) {
-      return flightDao.getAllFlights()
+    public Flight getFlightById(int id) {
+        return flightDao.getAllFlights()
                 .stream()
                 .filter((f) -> f.getId() == id)
-              .findFirst()
-              .orElse(null);
-    //return flightDao.getFlightById(id);
+                .findFirst()
+                .orElse(null);
+        //return flightDao.getFlightById(id);
     }
 
     public  void findFlights (LocalDate date,String destination,int amountOfTickets){
-          flightDao.getAllFlights()
-                 .stream()
-                 .filter((f ->f.getLocalDate().isEqual(date)
-                         && f.getDestination().contains(destination)
-                         && f.getFreePlaces() > amountOfTickets))
-                  .sorted(Comparator.comparing(Flight::getLocalDate))
-                  .forEach(System.out::println);
+        flightDao.getAllFlights()
+                .stream()
+                .filter((f ->f.getLocalDate().isEqual(date)
+                        && f.getDestination().contains(destination)
+                        && f.getFreePlaces() > amountOfTickets))
+                .sorted(Comparator.comparing(Flight::getLocalDate))
+                .forEach(System.out::println);
     }
     public void nextFlights (){
-         flightDao.getAllFlights()
+        flightDao.getAllFlights()
                 .stream()
                 .filter((f -> f.getLocalDate().isEqual(LocalDate.now())
                         && f.getLocalTime().isAfter(LocalTime.now())))
                 .sorted(Comparator.comparing(Flight::getLocalTime))
-                 .forEach(System.out::println);
+                .forEach(System.out::println);
+    }
 
 
     public Flight addFlight(Flight flight) {
         return flightDao.addFlight(flight);
-
     }
 
     public Flight generateData(Flight flight) {
@@ -69,9 +64,7 @@ public Flight getFlightById(int id) {
     }
 
     public void generateFlights() {
-
         for (int i = 0; i < 700; i++) {
-
             flightDao.addFlight(generateData(new Flight()));
 
         }
@@ -82,6 +75,7 @@ public Flight getFlightById(int id) {
                 Arrays.asList("Buenos Aires", "Rome", "London", "Tokyo",
                         "Lviv", "Paris", "Minsk", "Sofia", "San Jose", "Cairo",
                         "Tbilisi","Berlin","Milan","Athens","New-York","Dublin"));
+
         int index = new Random().nextInt(places.size());
         return places.get(index);
     }
@@ -97,8 +91,8 @@ public Flight getFlightById(int id) {
     }
 
     public LocalDate createRandomDate(int startYear) {
-        int day = createRandomIntBetween(17, 28);
-       // int month = createRandomIntBetween(11, 12);
+        int day = createRandomIntBetween(9, 28);
+        // int month = createRandomIntBetween(11, 12);
         int month = 11;
         int year = 2021;
         return LocalDate.of(year, month, day);

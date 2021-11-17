@@ -2,6 +2,7 @@ package com.company.booking.Booking;
 
 import com.company.booking.Constant.DataUtil;
 import com.company.booking.Constant.Sex;
+import com.company.booking.Flight;
 
 import java.io.Serializable;
 import java.time.*;
