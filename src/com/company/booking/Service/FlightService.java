@@ -23,8 +23,9 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlights() {
-        return flightDao.getAllFlights();
+        return flightDao.getAll();
     }
+
 
 
 public Flight getFlightById(int id) {
@@ -53,8 +54,6 @@ public Flight getFlightById(int id) {
                 .sorted(Comparator.comparing(Flight::getLocalTime))
                  .forEach(System.out::println);
 
-    }
-
 
     public Flight addFlight(Flight flight) {
         return flightDao.addFlight(flight);
@@ -72,8 +71,6 @@ public Flight getFlightById(int id) {
     public void generateFlights() {
 
         for (int i = 0; i < 700; i++) {
-
-      
 
             flightDao.addFlight(generateData(new Flight()));
 
@@ -100,7 +97,7 @@ public Flight getFlightById(int id) {
     }
 
     public LocalDate createRandomDate(int startYear) {
-        int day = createRandomIntBetween(9, 28);
+        int day = createRandomIntBetween(17, 28);
        // int month = createRandomIntBetween(11, 12);
         int month = 11;
         int year = 2021;
