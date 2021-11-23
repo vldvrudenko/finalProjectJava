@@ -1,66 +1,53 @@
-package com.company.booking.Booking;
+package com.company.booking;
 
-import com.company.booking.Constant.DataUtil;
-
-import java.io.Serializable;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
+import java.util.Random;
+//этот класс нужно использовать !
+public class Flight {
+    private Long id ;
+    private  String destination ;
+    private int freePlaces;
+    private Departures departure ;
+    private LocalDate localDate;
+    private LocalTime localTime;
 
-public class Flight implements DataUtil, Serializable {
 
-    private String flightNumber;
-    private long departureDateTime;
-    private long estFlightDuration;
-    private String origin;
-    private String destination;
-    private int maxNumSeats;
-    private List<Person> passengers;
 
-    public Flight(String flightNumber, long departureDateTime, long estFlightDuration, String origin, String destination, int maxNumSeats) {
-
-        this.flightNumber = flightNumber;
-        this.departureDateTime = departureDateTime;
-        this.estFlightDuration = estFlightDuration;
-        this.origin = origin;
+    public Flight(){
+        this.departure = Departures.Kyiv;
+    }
+    public Flight(String destination){
+        this.departure = Departures.Kyiv;
         this.destination = destination;
-        this.maxNumSeats = maxNumSeats;
-        this.passengers = new ArrayList();
-
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public LocalDate getLocalDate() {
+        return localDate;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
-    public long getDepartureDateTime() {
-        return departureDateTime;
+    public LocalTime getLocalTime() {
+        return localTime;
     }
 
-    public void setDepartureDateTime(long departureDateTime) {
-        this.departureDateTime = departureDateTime;
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
     }
 
-    public long getEstFlightDuration() {
-        return estFlightDuration;
+
+
+
+    public Long getId() {
+        return id;
     }
 
-    public void setEstFlightDuration(long estFlightDuration) {
-        this.estFlightDuration = estFlightDuration;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDestination() {
@@ -71,107 +58,39 @@ public class Flight implements DataUtil, Serializable {
         this.destination = destination;
     }
 
-    public int getPassengersOnBoard() {
-        return passengers.size();
+    public int getFreePlaces() {
+        return freePlaces;
     }
 
-    public int getMaxNumSeats() {
-        return maxNumSeats;
+    public void setFreePlaces(int freePlaces) {
+        this.freePlaces = freePlaces;
     }
 
-    public List<Person> getPassengers() {
-        return passengers;
+    public Departures getDeparture() {
+        return departure;
     }
 
-    public void setPassengers(List<Person> passengers) {
-        this.passengers = passengers;
+    public void setDeparture(Departures departure) {
+        this.departure = departure ;
     }
 
-    public boolean addPassenger(Person passenger) {
+@Override
+public String toString(){
+return "Рейс("+ id +"):дата-"+localDate +",время-"+localTime +",отправление из-"+departure+",место назначения-"
+        +destination+",свободных мест-"+freePlaces ;
+}
+@Override
+public boolean equals(Object o){
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Flight flight = (Flight) o;
+    return id == flight.id && destination== flight.destination
+            && departure == flight.departure && freePlaces == flight.freePlaces
+            && localTime == flight.localTime && localDate == flight.localDate;
+}
 
-        if (!passengers.contains(passenger) &&
-                passengers.size() < maxNumSeats &&
-                passenger != null) {
-
-            passengers.add(passenger);
-            return true;
-
-        } else
-
-            return false;
-
-    }
-
-    public boolean deletePassenger(Person passenger) {
-
-        if (!passengers.contains(passenger)) return false;
-
-        passengers.remove(passenger);
-        return true;
-
-    }
-
-    public boolean deletePassenger(int index) {
-        if (index >= 0 && index < passengers.size()) {
-            if (!passengers.contains(passengers.get(index))) return false;
-
-            passengers.remove(passengers.get(index));
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Flight flight = (Flight) o;
-        return flightNumber.equals(flight.getFlightNumber());
-    }
-
-    @Override
-    public int hashCode() {
-
-        int result = 11;
-        int coef = 31;
-
-        return coef * result + flightNumber.hashCode();
-
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "flightNumber='" + flightNumber + '\'' +
-                ", departureDate ='" +
-                Instant.ofEpochMilli(departureDateTime)
-                        .atZone(ZoneId.of(TIME_ZONE))
-                        .toLocalDateTime()
-                        .format(DateTimeFormatter
-                                .ofPattern(DATE_FORMAT)) + '\'' +
-                ", departureTime ='" +
-                Instant.ofEpochMilli(departureDateTime)
-                        .atZone(ZoneId.of(TIME_ZONE))
-                        .toLocalDateTime()
-                        .format(DateTimeFormatter
-                                .ofPattern(TIME_FORMAT)) + '\'' +
-                ", origin='" + origin + '\'' +
-                ", destination='" + destination + '\'' +
-                ", passengersOnBoard=" + getPassengersOnBoard() +
-                ", maxNumSeats=" + maxNumSeats +
-                ", duration=" +
-                LocalTime.ofNanoOfDay(estFlightDuration)
-                        .format(DateTimeFormatter.ofPattern(TIME_FORMAT)) +
-                '}';
-    }
-
-    public String prettyFormat() {
-        return flightNumber + " | " +
-                Instant.ofEpochMilli(departureDateTime)
-                        .atZone(ZoneId.of(TIME_ZONE))
-                        .toLocalDateTime()
-                        .format(DateTimeFormatter
-                                .ofPattern(TIME_FORMAT)) + " | " +
-                destination;
-    }
+@Override
+    public int hashCode(){
+return Objects.hash(id,localDate,localTime,departure,destination,freePlaces);
+}
 }
