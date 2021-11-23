@@ -16,9 +16,6 @@ public class FlightService {
     private static final int max = 49;
     Random rnd = new Random();
 
-    private DAO<Flight> flightDao = new CollectionFlightDAO();
-
-
     public FlightService(FlightDao flightDao) {
         this.flightDao = flightDao;
     }
