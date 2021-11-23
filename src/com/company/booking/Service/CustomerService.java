@@ -1,5 +1,6 @@
 package com.company.booking.Service;
 
+import com.company.booking.Booking.Customer;
 import com.company.booking.Constant.RoleType;
 import com.company.booking.Constant.Sex;
 import com.company.booking.DAO.CollectionCustomerDAO;

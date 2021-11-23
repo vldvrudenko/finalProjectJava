@@ -1,5 +1,6 @@
 package com.company.booking.DAO;
 
+import com.company.booking.Booking.Customer;
 import com.company.booking.Logger.AppLogger;
 
 import java.io.*;

@@ -1,5 +1,6 @@
 package com.company.booking.Controller;
 
+import com.company.booking.Booking.Customer;
 import com.company.booking.Booking.Passenger;
 import com.company.booking.Booking.Person;
 import com.company.booking.Constant.PersonType;
